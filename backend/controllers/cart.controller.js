@@ -1,3 +1,5 @@
+import Product from "../models/product.model.js";
+
 export const getCartProducts = async (req, res) => {
 	try {
 		const products = await Product.find({ _id: { $in: req.user.cartItems } });
@@ -14,7 +16,6 @@ export const getCartProducts = async (req, res) => {
 		res.status(500).json({ message: "Server error", error: error.message });
 	}
 };
-
 
 export const addToCart = async (req, res) => {
 	try {
